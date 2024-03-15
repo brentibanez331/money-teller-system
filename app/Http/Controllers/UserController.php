@@ -17,7 +17,7 @@ class UserController extends Controller
         if ($user->user_type_id == 1) {
             return view('admin.index', compact('users'))->with('admin.users', $users);
         } else if ($user->user_type_id == 2) {
-            return view('teller.index', compact('users'));
+            return view('teller.index');
         }
         
     }
