@@ -41,3 +41,20 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticationController::class, 'destroy'])
                 ->name('logout');    
 });
+
+Route::middleware('auth')->group(function () {
+    Route::get('/teller', function () {
+        return view('teller/index');
+    });
+    Route::get('/teller', [UserController::class, 'index'])->name('teller.index');
+    // Route::get('/admin-users', [UserController::class, 'index'])->name('admin.users');
+
+    //Dont change
+    Route::post('/store', [UserController::class, 'store'])->name('phonebook.store');
+    Route::get('/edit/{id}', [UserController::class, 'edit'])->name('phonebook.edit');
+    Route::put('/update', [UserController::class, 'update'])->name('phonebook.update');
+    Route::get('/delete/{id}', [UserController::class, 'delete'])->name('phonebook.delete');
+
+    Route::post('logout', [AuthenticationController::class, 'destroy'])
+                ->name('logout');    
+});

@@ -8,8 +8,17 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $users = User::all();
-        return view('admin.index',compact('users'))->with('admin.users', $users);
+
+        $user = Auth::user();
+
+        if ($user->user_type_id == 1) {
+            return view('admin.index', compact('users'))->with('admin.users', $users);
+        } else if ($user->user_type_id == 2) {
+            return view('teller.index', compact('users'));
+        }
+        
     }
 }

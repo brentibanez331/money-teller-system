@@ -3,7 +3,7 @@
 Login
 @endsection
 @section('content')
-<section class="bg-[#161513] mt-7">
+<section class="mt-7">
   <div class="h-full">
     <!-- Left column container with background-->
     <div
@@ -42,12 +42,12 @@ Login
         <form  method="POST" action="{{ route('login') }}">
           @csrf <!-- {{ csrf_field() }} -->
           <!--Sign in section-->
-          <h2 class="items-center mb-2 text-center text-3xl font-bold text-white">Hey, Welcome Back!</h2>
-          <p class="text-center mb-10 text-neutral-300">We're happy to see you again.</h2>
+          <h2 class="items-center mb-2 text-center text-3xl font-bold text-black">Hey, Welcome Back!</h2>
+          <p class="text-center mb-10 text-neutral-800">We're happy to see you again.</h2>
           <div
             class="flex flex-row items-center justify-center">
             
-            <p class="mb-0 mr-4 text-lg text-neutral-300">Sign in with</p>
+            <p class="mb-0 mr-4 text-lg text-neutral-800">Sign in with</p>
 
             <!-- Facebook -->
             <button
@@ -114,13 +114,13 @@ Login
           <div class="relative mb-6" data-te-input-wrapper-init>
             <input
               type="text"
-              class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-50 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 text-white"
+              class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-50 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
               id="email"
               name="email"
               placeholder="Email address" />
             <label
               for="email"
-              class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+              class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
               >Email address
             </label>
           </div>
@@ -135,7 +135,7 @@ Login
               placeholder="Password" />
             <label
               for="password"
-              class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+              class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
               >Password
             </label>
           </div>
@@ -156,14 +156,14 @@ Login
             </div>
 
             <!--Forgot password link-->
-            <a href="#!" class="text-neutral-400 hover:text-neutral-300 transition ease-in-out duration-150">Forgot password?</a>
+            <a href="#!" class="text-neutral-600 hover:text-neutral-900 transition ease-in-out duration-150">Forgot password?</a>
           </div>
 
           <!-- Login button -->
           <div class="text-center lg:text-left">
             <button
               type="submit"
-              class="inline-block rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] bg-[#7bafed] w-full"
+              class="inline-block rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-300 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] bg-[#7bafed] w-full hover:bg-[#8ebbed]"
               data-te-ripple-init
               data-te-ripple-color="light">
               Login
@@ -174,7 +174,7 @@ Login
               Don't have an account yet?
               <a
                 href="/register"
-                class="text-danger transition duration-150 ease-in-out focus:text-danger-600 active:text-danger-700 underline text-[#7bafed] hover:text-[#aacaf0]"
+                class="transition duration-150 ease-in-out focus:text-danger-600 active:text-danger-700 underline text-[#7bafed] hover:text-[#aacaf0]"
                 >Create an account</a
               >
             </p>

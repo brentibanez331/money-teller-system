@@ -9,7 +9,19 @@
 </head>
 <body class="text-black">
 <main>
-    <h1 class="px-10 font-bold text-3xl border-b-2 py-5">CashFlow</h1>
+    <div class="border-b-2 px-10 flex flex-row items-center justify-between">    
+        <h1 class="font-bold text-3xl py-5">CashFlow</h1>
+        <form method="POST" action="{{ route('logout') }}">
+        @csrf
+
+            <a href="route('logout')" class="text-lg font-semibold leading-6 text-black"
+                       onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                Logout <span aria-hidden="true">&rarr;</span>
+            </a>
+        </form>
+    </div>
+    
     <div class="flex flex-row justify-start">
         <div class="w-64 h-screen border-solid border-r-2">
             <ul>
