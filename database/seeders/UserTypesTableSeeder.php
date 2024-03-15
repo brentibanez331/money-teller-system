@@ -21,7 +21,7 @@ class UserTypesTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            ['id' => 1, 'first_name' => '', 'middle_name' => '', 'last_name' => '', 'email' => 'admin@gmail.com', 
+            ['id' => 1, 'first_name' => 'Administrator', 'middle_name' => '', 'last_name' => '', 'email' => 'admin@gmail.com', 
             'password' => Hash::make('admin123'), 'birthdate'=>null, 'full_address'=>'',  'user_type_id' => 1, 'branch_assigned' => null]
         ]);
     }

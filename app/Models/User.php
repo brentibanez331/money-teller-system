@@ -47,4 +47,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function userType(){
+        return $this->belongsTo(UserType::class, 'user_type_id', 'id');
+    }
+
 }

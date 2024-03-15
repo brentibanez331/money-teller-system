@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\UserType;
 
 class UserController extends Controller
 {
@@ -19,6 +20,11 @@ class UserController extends Controller
         } else if ($user->user_type_id == 2) {
             return view('teller.index');
         }
-        
+    }
+
+    public function adminusers(){
+        $users = User::all();
+
+        return view('admin.users', compact('users'));
     }
 }

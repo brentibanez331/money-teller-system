@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call(UserTypesTableSeeder::class);
         $this->call(TransactionFeeSeeder::class);
+        $this->call(BranchProfileSeeder::class);
     }
 }

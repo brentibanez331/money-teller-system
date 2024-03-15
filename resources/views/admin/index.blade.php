@@ -52,38 +52,48 @@
                 </li>
             </ul>
         </div>
-        <div>
-            <h2>Welcome Admin</h2>
+        <div class="w-full h-screen bg-neutral-100">
+        <div class="m-7">
+            <h2 class="text-3xl font-bold mb-14">Welcome Admin!</h2>
+
             <table
-                class="min-w-full border text-center text-sm font-light dark:border-neutral-500">
-                    <thead class="border-b bg-neutral-800 font-medium text-white dark:border-neutral-500 dark:bg-neutral-600">
+                class="min-w-full text-sm font-light dark:border-neutral-500">
+                    <thead class="font-medium text-black dark:border-neutral-500">
                         <tr>
                             <th
                                 scope="col"
-                                class="border-r px-6 py-4 dark:border-neutral-500">
-                                First Name
+                                class=" text-left dark:border-neutral-500 pb-3.5 pl-4">
+                                NAME
                             </th>
                             <th
                                 scope="col"
-                                class="border-r px-6 py-4 dark:border-neutral-500">
-                                Last Name
+                                class=" text-left dark:border-neutral-500 pb-3.5">
+                                ROLE
                             </th>
-                            <th scope="col" class="px-6 py-4">Phone Number</th>
-                            <th scope="col" class="px-6 py-4" colspan="2">Action</th>
+                            <th scope="col" class="text-left dark:border-neutral-500 pb-3.5">BRANCH</th>
+                            <th scope="col" class="text-left dark:border-neutral-500 pb-3.5">ADDRESS</th>
+                            <th scope="col" class="text-left dark:border-neutral-500 pb-3.5" colspan="2">ACTION</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="bg-white">
                         @foreach ($users as $cont)
-                            <tr class="border-b dark:border-neutral-500 ease-in-out hover:bg-neutral-100">
-                                <td class="whitespace-nowrap border-r px-6 py-4 dark:border-neutral-500">
-                                {{ $cont->first_name }}
+                            <tr class="border-t border-b border-neutral-300 ease-in-out hover:bg-neutral-100">
+                                <td class="flex flex-col whitespace-nowrap px-4 py-4 dark:border-neutral-500">
+                                    <div class="mb-0.5">
+                                        {{ $cont->first_name }} {{ $cont->middle_name}} {{$cont->last_name}}
+                                    </div>
+                                    <div class="font-bold text-blue-900">
+                                        {{ $cont->email }}
+                                    </div>
+                                
                                 </td>
-                                <td class="whitespace-nowrap border-r px-6 py-4 dark:border-neutral-500">
-                                {{ $cont->last_name }}
+                                <td class="whitespace-nowrap py-4 dark:border-neutral-500 capitalize">
+                                {{ $cont->userType->user_type ?? '' }}
                                 </td>
-                                <td class="whitespace-nowrap border-r px-6 py-4 dark:border-neutral-500">{{ $cont->phone_number }}</td>
+                                <td class="whitespace-nowrap py-4 dark:border-neutral-500">{{ $cont->branch_assigned }}</td>
+                                <td class="whitespace-nowrap py-4 dark:border-neutral-500">{{ $cont->full_address }}</td>
                                 <td
-                                    class="whitespace-nowrap border-r px-6 py-4 dark:border-neutral-500 ">
+                                    class="whitespace-nowrap py-4 dark:border-neutral-500 ">
                                     <a href="{{ route('phonebook.edit', ['id' => $cont->id] ) }}"
                                         class="text-indigo-600 hover:text-indigo-900">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
@@ -94,7 +104,7 @@
                                     </a>
                                 </td>
                                 <td
-                                    class="whitespace-nowrap border-r px-6 py-4 dark:border-neutral-500 ">
+                                    class="whitespace-nowrap px-6 py-4 dark:border-neutral-500 ">
                                     <form action="{{ route('phonebook.delete',$cont->id) }}" method="GET" onsubmit="return confirm('{{ trans('Are you sure you want to delete this ? ') }}');">
                                         @csrf
                                         <button type="submit" class="flex items-center">
@@ -112,6 +122,9 @@
                     </tbody>
                 </table>
         </div>
+
+        </div>
+        
     </div>
 </main>
 </body>

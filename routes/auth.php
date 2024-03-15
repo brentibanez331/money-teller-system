@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
         return view('admin/index');
     });
     Route::get('/admin', [UserController::class, 'index'])->name('admin.index');
-    Route::get('/admin-users', [UserController::class, 'index'])->name('admin.users');
+    Route::get('/admin-users', [UserController::class, 'adminusers'])->name('admin.users');
 
     //Dont change
     Route::post('/store', [UserController::class, 'store'])->name('phonebook.store');
