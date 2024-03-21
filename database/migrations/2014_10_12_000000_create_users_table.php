@@ -61,7 +61,7 @@ return new class extends Migration {
             $table->date('birthdate')->nullable();
             $table->string('full_address');
             $table->unsignedBigInteger('user_type_id')->default(2);
-            $table->unsignedBigInteger('branch_assigned')->nullable();
+            $table->unsignedBigInteger('branch_assigned')->nullable()->default(1);
             $table->rememberToken();
             $table->timestamps();
 
