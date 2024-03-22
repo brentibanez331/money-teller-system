@@ -10,6 +10,7 @@ class TransactionFees extends Model
     use HasFactory;
 
     protected $table = 'tbl_transaction_fees';
+    public $timestamps = false;
     protected $fillable = [
         'min_amt',
         'max_amt',

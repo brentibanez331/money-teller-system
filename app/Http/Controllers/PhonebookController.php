@@ -49,8 +49,6 @@ class PhonebookController extends Controller
             $phonebook->last_name = $request->last_name;
             $phonebook->phone_number = $request->phone_number;
 
-            
-    
             $phonebook->saveOrFail();
             return redirect()->back();
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {

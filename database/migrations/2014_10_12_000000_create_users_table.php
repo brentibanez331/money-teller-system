@@ -55,11 +55,11 @@ return new class extends Migration {
             $table->id();
             $table->string('first_name');
             $table->string('middle_name')->nullable();
-            $table->string('last_name');
+            $table->string('last_name')->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->date('birthdate')->nullable();
-            $table->string('full_address');
+            $table->string('full_address')->nullable();
             $table->unsignedBigInteger('user_type_id')->default(2);
             $table->unsignedBigInteger('branch_assigned')->nullable()->default(1);
             $table->rememberToken();

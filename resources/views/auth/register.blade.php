@@ -67,15 +67,8 @@ Register
           <h2 class="items-center mb-2 text-center text-3xl font-bold text-black">Create an Account</h2>
           <p class="text-center mb-7 text-neutral-700">One account for all of your <span class="font-bold">cashflow</span></h2>
           <div
-            class="flex flex-row items-center justify-center lg:justify-start">
-            
+            class="flex flex-row items-center justify-center lg:justify-start">  
           </div>
-
-          <!-- Separator between social media sign in and email/password sign in -->
-          <!-- <div
-            class="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
-          </div> -->
-
 
           <!-- Name input -->
           <div class="flex flex-row mb-4">

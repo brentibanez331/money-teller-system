@@ -54,7 +54,10 @@
         </div>
         <div class="w-full h-screen bg-neutral-100">
         <div class="m-7">
-            <h2 class="text-3xl font-bold mb-14">Branch Profile</h2>
+            <h2 class="text-3xl font-bold mb-7">Branch Profile</h2>
+            <div class="w-full flex justify-end">
+                <a href="/admin-addbranch" class="bg-[#7bafed] hover:bg-[#8ebbed] transition ease-in-out duration-150 p-2 rounded-md mb-7 text-white"><strong>+</strong> Add New Branch</a>
+            </div>
 
             <table
                 class="min-w-full text-sm font-light dark:border-neutral-500">
@@ -85,7 +88,7 @@
                                 <td class="whitespace-nowrap py-4 dark:border-neutral-500">{{ $cont->country_iso_code }}</td>
                                 <td
                                     class="whitespace-nowrap py-4 dark:border-neutral-500 ">
-                                    <a href="{{ route('phonebook.edit', ['id' => $cont->id] ) }}"
+                                    <a href="{{ route('admin.editbranch', ['id' => $cont->id] ) }}"
                                         class="text-indigo-600 hover:text-indigo-900">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
@@ -96,7 +99,7 @@
                                 </td>
                                 <td
                                     class="whitespace-nowrap px-6 py-4 dark:border-neutral-500 ">
-                                    <form action="{{ route('phonebook.delete',$cont->id) }}" method="GET" onsubmit="return confirm('{{ trans('Are you sure you want to delete this ? ') }}');">
+                                    <form action="{{ route('admin.deletebranch',$cont->id) }}" method="GET" onsubmit="return confirm('{{ trans('Are you sure you want to delete this ? ') }}');">
                                         @csrf
                                         <button type="submit" class="flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg"

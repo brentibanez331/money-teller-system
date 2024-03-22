@@ -11,7 +11,7 @@ class BranchType extends Model
 
     protected $table = 'tbl_branch_profile';
 
-    protected $primaryKey = 'id';
+    
 
     /**
      * The attributes that are mass assignable.
@@ -23,8 +23,5 @@ class BranchType extends Model
     /**
      * Get the users associated with the user type.
      */
-    public function branches()
-    {
-        return $this->hasMany(User::class, 'branch_assigned', 'id');
-    }
+    
 }

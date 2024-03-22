@@ -10,6 +10,7 @@ class BranchProfile extends Model
     use HasFactory;
 
     protected $table = 'tbl_branch_profile';
+    public $timestamps = false;
 
     protected $primaryKey = 'id';
     protected $fillable = [

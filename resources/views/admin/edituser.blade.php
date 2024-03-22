@@ -26,8 +26,7 @@
     <div class="flex flex-row justify-start">
       <div class="w-64 h-screen border-solid border-r-2">
         <ul>
-          <li
-            class="px-10 py-3.5 transition ease-in-out duration-150 border-b-2 flex flex-row items-center">
+          <li class="px-10 py-3.5 transition ease-in-out duration-150 border-b-2 flex flex-row items-center">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
               class="w-5"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
               <path fill="#161513"
@@ -46,7 +45,8 @@
             <a href="/admin-users" class="ml-5">Users</a>
           </li>
 
-          <li class="px-10 py-3.5 hover:bg-gray-200 transition ease-in-out duration-150 flex flex-row items-center">
+          <li
+            class="px-10 py-3.5 hover:bg-gray-200 transition ease-in-out duration-150 flex flex-row items-center">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
               class="w-5"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
               <path fill="#161513"
@@ -76,19 +76,20 @@
       </div>
       <div class="w-full h-screen bg-neutral-100">
         <div class="m-7">
-          <h2 class="text-3xl font-bold mb-7">Create a User</h2>
-          <form method="POST" action="{{ route('admin.store')}}">
-            <!-- @method('PUT') -->
+          <h2 class="text-3xl font-bold mb-7">Update User Information</h2>
+          <form method="POST" action="{{ route('admin.updateuser', ['id' => $user->id]) }}">
+            @method('PUT')
             @csrf <!-- {{ csrf_field() }} -->
             <div class="w-5/12">
               <div>
                 <!--First name input-->
                 <div class="grid grid-cols-1 gap-4">
+                  <!-- Full Address input -->
                   <div class="flex flex-row">
                     <div class="relative mr-3.5" data-te-input-wrapper-init>
                       <input type="text"
                         class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                        id="first_name" name="first_name" placeholder="First name" />
+                        id="first_name" name="first_name" placeholder="First name" value="{{$user->first_name}}" />
                       <label for="first_name"
                         class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary">First
                         Name*
@@ -97,7 +98,7 @@
                     <div class="relative mr-3.5" data-te-input-wrapper-init>
                       <input type="text"
                         class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                        id="middle_name" name="middle_name" placeholder="Middle name" />
+                        id="middle_name" name="middle_name" placeholder="Middle name" value="{{$user->middle_name}}"/>
                       <label for="middle_name"
                         class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary">Middle
                         Name
@@ -106,7 +107,7 @@
                     <div class="relative" data-te-input-wrapper-init>
                       <input type="text"
                         class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                        id="last_name" name="last_name" placeholder="Last name" />
+                        id="last_name" name="last_name" placeholder="Last name" value="{{$user->last_name}}"/>
                       <label for="last_name"
                         class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary">Last
                         Name
@@ -114,21 +115,19 @@
                     </div>
                   </div>
 
-                  <!-- Birthdate input -->
                   <div class="relative" data-te-input-wrapper-init>
                     <input type="date"
                       class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                      id="birthdate" name="birthdate" placeholder="Birthdate" />
+                      id="birthdate" name="birthdate" placeholder="Birthdate" value="{{$user->birthdate}}"/>
                     <label for="birthdate"
                       class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary">Birthdate
                     </label>
                   </div>
 
-                  <!-- Full Address input -->
                   <div class="relative" data-te-input-wrapper-init>
                     <input type="text"
                       class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                      id="full_address" name="full_address" placeholder="Full Address" />
+                      id="full_address" name="full_address" placeholder="Full Address" value="{{$user->full_address}}"/>
                     <label for="full_address"
                       class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary">Full
                       Address
@@ -140,7 +139,7 @@
                   <div class="relative" data-te-input-wrapper-init>
                     <input type="text"
                       class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                      id="email" name="email" placeholder="Email address" />
+                      id="email" name="email" placeholder="Email address" value="{{$user->email}}"/>
                     <label for="email"
                       class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary">Email
                       address*
@@ -152,19 +151,18 @@
                       class="peer block min-h-[auto] w-full rounded border border-neutral-400 bg-transparent px-3 py-[0.6rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:border-primary focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:border-neutral-600 dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                       id="user_type_id" name="user_type_id" placeholder="Select an option">
                       <option value="" disabled selected>-- Select a Role --*</option>
-                      <option value="1">Admin</option>
-                      <option value="2">Teller</option>
+                      <option value="1" @if($user->user_type_id == 1) selected @endif> Admin </option>
+                      <option value="2" @if($user->user_type_id == 2) selected @endif>Teller</option>
                     </select>
                   </div>
-
 
                   <div class="relative">
                     <select
                       class="peer block min-h-[auto] w-full rounded border border-neutral-400 bg-transparent px-3 py-[0.6rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:border-primary focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:border-neutral-600 dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                      id="branch_assigned" name="branch_assigned" placeholder="Select an option">
+                      id="branch_assigned" name="branch_assigned" placeholder="Select an option" value="{{$user->branch_assigned}}">
                       <option value="" disabled selected>-- Select a Branch --</option>
                       @foreach ($branch as $cont)
-                        <option value="{{$cont->id}}">{{$cont -> branch_name}}</option>
+                        <option value="{{$cont->id}}" @if($user->branch_assigned == $cont->id) selected @endif> {{$cont -> branch_name}} </option>
                       @endforeach
                     </select>
                   </div>
@@ -173,7 +171,7 @@
                   <div class="relative mb-10" data-te-input-wrapper-init>
                     <input type="text"
                       class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                      id="password" name="password" placeholder="Password" />
+                      id="password" name="password" placeholder="Password"/>
                     <label for="password"
                       class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary">
                       Password*
@@ -181,13 +179,16 @@
                   </div>
                 </div>
 
+
+
+
                 <!--Submit button-->
                 <div class="flex items-center justify-start pb-6">
 
                   <button type="submit"
                     class="inline-block pull-right rounded bg-success px-6 pb-2 mr-3.5 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:bg-success-600 hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:bg-success-600 focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:bg-success-700 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]"
                     data-te-ripple-init data-te-ripple-color="light">
-                    Create User
+                    Update User
                   </button>
                   <a href="/admin-users"
                     class="inline-block pull-right rounded bg-[#7bafed] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:bg-[#4891e8] hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:bg-success-600 focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:bg-success-700 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
