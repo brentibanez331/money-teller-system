@@ -150,11 +150,10 @@
                   <div class="relative">
                     <select
                       class="peer block min-h-[auto] w-full rounded border border-neutral-400 bg-transparent px-3 py-[0.6rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:border-primary focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:border-neutral-600 dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                      id="dropdown_id" name="dropdown_name" placeholder="Select an option">
+                      id="user_type_id" name="user_type_id" placeholder="Select an option">
                       <option value="" disabled selected>-- Select a Role --</option>
                       <option value="1">Admin</option>
                       <option value="2">Teller</option>
-                      <!-- Add more options as needed -->
                     </select>
                   </div>
 
@@ -162,12 +161,11 @@
                   <div class="relative">
                     <select
                       class="peer block min-h-[auto] w-full rounded border border-neutral-400 bg-transparent px-3 py-[0.6rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:border-primary focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:border-neutral-600 dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                      id="dropdown_id" name="dropdown_name" placeholder="Select an option">
+                      id="branch_assigned" name="branch_assigned" placeholder="Select an option">
                       <option value="" disabled selected>-- Select a Branch --</option>
                       @foreach ($branch as $cont)
                         <option value="{{$cont->id}}">{{$cont -> branch_name}}</option>
                       @endforeach
-                      <!-- Add more options as needed -->
                     </select>
                   </div>
 
@@ -190,7 +188,7 @@
                     data-te-ripple-init data-te-ripple-color="light">
                     Update contact
                   </button>
-                  <a href="/"
+                  <a href="/admin"
                     class="inline-block pull-right rounded bg-[#7bafed] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:bg-[#4891e8] hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:bg-success-600 focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:bg-success-700 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
                     Cancel
                   </a>

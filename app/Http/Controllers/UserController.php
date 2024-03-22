@@ -34,6 +34,17 @@ class UserController extends Controller
 
     public function store(Request $request): RedirectResponse|JsonResponse
     {
+
+        $validated = $request->validate([
+            'first_name' => 'required',
+            'middle_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'birthdate' => 'required',
+            'full_address' => 'required',
+            'user_type_id'=>'required|numeric',
+        ]);
         try {
             // Your code that may throw an exception
             $user = new User;
