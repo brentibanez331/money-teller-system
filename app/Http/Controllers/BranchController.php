@@ -13,4 +13,11 @@ class BranchController extends Controller
 
         return view('admin.branches', compact('branch'))->with('admin.users', $branch);
     }
+
+    public function getData()
+    {
+        $branch = BranchProfile::all();
+
+        return view('admin.adduser', compact('branch'));
+    }
 }

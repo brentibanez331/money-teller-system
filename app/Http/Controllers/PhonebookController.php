@@ -48,6 +48,8 @@ class PhonebookController extends Controller
             $phonebook->first_name = $request->first_name;
             $phonebook->last_name = $request->last_name;
             $phonebook->phone_number = $request->phone_number;
+
+            
     
             $phonebook->saveOrFail();
             return redirect()->back();

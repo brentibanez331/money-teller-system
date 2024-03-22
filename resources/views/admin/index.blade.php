@@ -54,8 +54,10 @@
         </div>
         <div class="w-full h-screen bg-neutral-100">
         <div class="m-7">
-            <h2 class="text-3xl font-bold mb-14">Welcome Admin!</h2>
-
+            <h2 class="text-3xl font-bold mb-7">Welcome Admin!</h2>
+            <div class="w-full flex justify-end">
+                <a href="/admin-adduser" class="bg-[#7bafed] hover:bg-[#8ebbed] transition ease-in-out duration-150 p-2 rounded-md mb-7 text-white"><strong>+</strong> Add New User</a>
+            </div>
             <table
                 class="min-w-full text-sm font-light dark:border-neutral-500">
                     <thead class="font-medium text-black dark:border-neutral-500">
@@ -90,7 +92,7 @@
                                 <td class="whitespace-nowrap py-4 dark:border-neutral-500 capitalize">
                                 {{ $cont->userType->user_type ?? '' }}
                                 </td>
-                                <td class="whitespace-nowrap py-4 dark:border-neutral-500">{{ $cont->branch_assigned }}</td>
+                                <td class="whitespace-nowrap py-4 dark:border-neutral-500">{{ $cont->branch->branch_name ?? '' }}</td>
                                 <td class="whitespace-nowrap py-4 dark:border-neutral-500">{{ $cont->full_address }}</td>
                                 <td
                                     class="whitespace-nowrap py-4 dark:border-neutral-500 ">
@@ -121,7 +123,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                
         </div>
+        
 
         </div>
         

@@ -35,9 +35,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin-users', [UserController::class, 'adminusers'])->name('admin.users');
     Route::get('/admin-branches', [BranchController::class, 'index'])->name('admin.branches');
     Route::get('/admin-fees', [TransactionFeeController::class, 'index'])->name('admin.fees');
+    Route::get('/admin-adduser', [BranchController::class, 'getData'])->name('admin.adduser');
+    Route::post('/admin-userstore', [UserController::class, 'store'])->name('admin.store');
 
     //Dont change
-    Route::post('/store', [UserController::class, 'store'])->name('phonebook.store');
+    // Route::post('/store', [UserController::class, 'store'])->name('phonebook.store');
     Route::get('/edit/{id}', [UserController::class, 'edit'])->name('phonebook.edit');
     Route::put('/update', [UserController::class, 'update'])->name('phonebook.update');
     Route::get('/delete/{id}', [UserController::class, 'delete'])->name('phonebook.delete');

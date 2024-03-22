@@ -23,6 +23,8 @@ class User extends Authenticatable
         'last_name',
         'birthdate',
         'full_address',
+        'user_type_id',
+        'branch_assigned',
         'email',
         'password',
     ];
@@ -49,6 +51,10 @@ class User extends Authenticatable
 
     public function userType(){
         return $this->belongsTo(UserType::class, 'user_type_id', 'id');
+    }
+
+    public function branch(){
+        return $this->belongsTo(BranchProfile::class, 'branch_assigned', 'id');
     }
 
 }

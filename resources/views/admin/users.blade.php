@@ -90,7 +90,7 @@
                                 <td class="whitespace-nowrap py-4 dark:border-neutral-500 capitalize">
                                 {{ $cont->userType->user_type ?? '' }}
                                 </td>
-                                <td class="whitespace-nowrap py-4 dark:border-neutral-500">{{ $cont->branch_assigned }}</td>
+                                <td class="whitespace-nowrap py-4 dark:border-neutral-500">{{ $cont->branch->branch_name ?? '' }}</td>
                                 <td class="whitespace-nowrap py-4 dark:border-neutral-500">{{ $cont->full_address }}</td>
                                 <td
                                     class="whitespace-nowrap py-4 dark:border-neutral-500 ">
