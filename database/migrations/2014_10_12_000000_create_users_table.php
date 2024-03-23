@@ -60,8 +60,9 @@ return new class extends Migration {
             $table->string('password');
             $table->date('birthdate')->nullable();
             $table->string('full_address')->nullable();
+            $table->integer('balance')->nullable()->default(1000);
             $table->unsignedBigInteger('user_type_id')->default(2);
-            $table->unsignedBigInteger('branch_assigned')->nullable()->default(1);
+            $table->unsignedBigInteger('branch_assigned')->default(1);
             $table->rememberToken();
             $table->timestamps();
 

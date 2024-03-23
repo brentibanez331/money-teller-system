@@ -75,6 +75,16 @@ Route::middleware('auth')->group(function () {
         return view('teller/index');
     });
     Route::get('/teller', [UserController::class, 'index'])->name('teller.index');
+    Route::get('/teller-send', function () {
+        return view('teller/send');
+    });
+
+    Route::get('/teller-request', function () {
+        return view('teller/request');
+    });
+
+    Route::get('/teller-contacts', [UserController::class, 'getTellers'])->name('teller.contacts');
+
     // Route::get('/admin-users', [UserController::class, 'index'])->name('admin.users');
 
     //Dont change

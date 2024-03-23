@@ -105,8 +105,10 @@
                                         </svg>
                                     </a>
                                 </td>
+                                
                                 <td
                                     class="whitespace-nowrap px-6 py-4 dark:border-neutral-500 ">
+                                    @if($cont->id != $user->id)
                                     <form action="{{ route('admin.deleteuser',$cont->id) }}" method="GET" onsubmit="return confirm('{{ trans('Are you sure you want to delete this ? ') }}');">
                                         @csrf
                                         <button type="submit" class="flex items-center">
@@ -118,7 +120,9 @@
                                         </svg>
                                     </button>
                                     </form>
+                                    @endif
                                 </td>
+                                
                             </tr>
                         @endforeach
                     </tbody>

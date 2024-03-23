@@ -25,14 +25,23 @@ class UserController extends Controller
         if ($user->user_type_id == 1) {
             return view('admin.index', compact('users', 'user'))->with('admin.users', $users);
         } else if ($user->user_type_id == 2) {
-            return view('teller.index');
+            return view('teller.index', compact('user'));
         }
     }
 
     public function adminusers(){
         $users = User::all();
 
-        return view('admin.users', compact('users'));
+        $user = Auth::user();
+
+        return view('admin.users', compact('users', 'user'));
+    }
+
+    public function getTellers(){
+        $user = Auth::user();
+        $tellers = User::where('user_type_id', 2)->whereNotIn('id', [$user->id])->get();  // Get all users with user_type_id = 2
+
+        return view('teller.contacts', compact('tellers'));
     }
 
     public function store(Request $request): RedirectResponse|JsonResponse
@@ -59,6 +68,11 @@ class UserController extends Controller
             $user->full_address = $request->full_address;
             $user->user_type_id = $request->user_type_id;
             $user->branch_assigned = $request->branch_assigned;
+
+            if ($request->user_type_id == 1) {
+                $user->balance = null;
+            }
+            
             $user->email = $request->email;
             $user->password = $request->password;
     

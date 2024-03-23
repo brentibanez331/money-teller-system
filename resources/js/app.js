@@ -9,6 +9,17 @@ const countryTimeZones = {
     'JP': 'Asia/Tokyo'
 }
 
+const currencySymbol = {
+    'PH': '₱',
+    'US': '$',
+    'SG': '$',
+    'JP': '¥'
+}
+
+function getCurrencySymbol(countryCode){
+    return currencySymbol[countryCode];
+}
+
 function getTimeZone(countryCode) {
     // Return the time zone from the dictionary if available, otherwise return a default value
     return countryTimeZones[countryCode] || 'UTC'; // You can change 'UTC' to any default time zone you prefer
@@ -16,6 +27,8 @@ function getTimeZone(countryCode) {
 
 const userCountry = window.userCountry || 'PH';
 const timeZone = getTimeZone(userCountry);
+const currencyElement = document.getElementById('currency');
+currencyElement.textContent = getCurrencySymbol(userCountry);
 
 // Function to format and display the time and date
 function displayTimeAndDate() {
