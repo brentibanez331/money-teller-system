@@ -34,6 +34,8 @@ class UserController extends Controller
         }
     }
 
+    
+
     public function adminusers(){
         $users = User::all();
 
@@ -160,3 +162,4 @@ class UserController extends Controller
         }
     }
 }
+

@@ -38,7 +38,7 @@
             <div class="w-5/12 bg-[#1C1C22] rounded-lg flex flex-col justify-center items-center">
                 <h1 class="text-lg mt-7">Sender</h1>
                 <h1 class="text-2xl mb-16"> {{$teller->email}} </h1>
-                <form action="{{ route("teller.requesttransaction-details", $teller->id) }}" method="POST" class="flex flex-col justify-center items-center">
+                <form action="{{ route("teller.transaction-details", $teller->id) }}" method="POST" class="flex flex-col justify-center items-center">
                 @csrf
                     <div class="relative">
                         <input type="text"

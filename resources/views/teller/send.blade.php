@@ -15,9 +15,9 @@
             <img src='/image/coinflux.png' class="size-10 mr-24"/>
             <div class="flex flex-row">
                 <a href="/teller" class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Home</a>
-                <a href="/teller" class="text-xl px-5 py-2 rounded-full mr-5 bg-[#292929]">Send and Request</a>
-                <a href="/teller" class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Wallet</a>
-                <a href="/teller" class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Activity</a>
+                <a href="/teller-send" class="text-xl px-5 py-2 rounded-full mr-5 bg-[#292929]">Send and Request</a>
+                <a href="/teller-wallet" class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Wallet</a>
+                <a href="/teller-activity" class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Activity</a>
             </div>
         </div>    
         
@@ -51,7 +51,6 @@
             </div>
             <!--Submit button-->
             <div class="flex items-center justify-start pb-6 mt-7">
-
                 <button type="submit"
                 class="inline-block pull-right rounded-full bg-[#006699] px-10 pb-2 mr-3.5 pt-2.5 text-lg font-medium leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:bg-[#0099CC] hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:bg-[#0099CC] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:bg-success-700 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]"
                 data-te-ripple-init data-te-ripple-color="light">

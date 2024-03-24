@@ -20,9 +20,9 @@
                     <a href="/teller-send"
                         class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Send
                         and Request</a>
-                    <a href="/teller"
+                    <a href="/teller-wallet"
                         class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Wallet</a>
-                    <a href="/teller"
+                    <a href="{{ route("teller.activity") }}"
                         class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Activity</a>
                 </div>
             </div>
@@ -65,46 +65,83 @@
                     <h3 class="text-2xl mb-5">Recent Activity</h3>
                     <h3 class="text-xl mb-5">Send History</h3>
                     @foreach ($transactions as $trans)
-                    @if($trans->sender_contact == $user->email)
-                    <div class="w-full flex justify-between rounded-md bg-[#232329] border-[1px] border-[#303036] p-3">
+                    @if($trans->sender_contact == $user->email && $trans->transaction_status == "COMPLETED")
+                    <div class="w-full flex justify-between rounded-md bg-[#232329] border-[1px] border-[#303036] p-3 mb-2">
                         <div class="">
                             <h3 class="text-lg">{{ $trans->receiver->first_name }} {{ $trans->receiver->middle_name }} {{
                                 $trans->receiver->last_name }}</h3>
                             <h3>{{ $trans->recipient_contact }}</h3>
                         </div>
                         <div class="text-end">
-                            <h2 class="text-2xl">{{ $trans->amount_local_currency }} <span class="text-sm">{{ $trans->original_currency }}</span></h2>
+                            @if($user->branch->currency == $trans->currency_conversion_code)
+                            <h2 class="text-2xl">{{ $trans->amount_converted }} <span class="text-sm">{{ $trans->currency_conversion_code }}</span></h2>
+                                @else
+                                <h2 class="text-2xl">{{ $trans->amount_local_currency }} <span class="text-sm">{{ $trans->original_currency }}</span></h2>
+                                @endif
                             
                             @if($trans->transaction_status == "PENDING")
                                 <p class="text-warning-400">PENDING</p>
                             @elseif($trans->transaction_status == "COMPLETED")
                                 <p class="text-success-400">COMPLETED</p>
-                            @elseif($trans->transaction_status == "FAILED")
-                                <p>FAILED</p>
+                            @elseif($trans->transaction_status == "CANCELLED")
+                                <p class="text-danger-400">CANCELLED</p>
                             @endif
                             
                         </div>
                     </div>
                     @endif
                     @endforeach
-                    <h3 class="text-xl mb-5 mt-10">Requests</h3>
+                    <h3 class="text-xl mb-5 mt-10">Requests from Contacts</h3>
+                    @foreach ($transactions as $trans)
+                    @if($trans->sender_contact == $user->email && ($trans->transaction_status == "PENDING" || $trans->transaction_status == "CANCELLED"))
+                    <div class="w-full flex justify-between rounded-md bg-[#232329] border-[1px] border-[#303036] p-3 mb-2">
+                        <div class="">
+                            <h3 class="text-lg">{{ $trans->receiver->first_name }} {{ $trans->receiver->middle_name }} {{
+                                $trans->receiver->last_name }}</h3>
+                            <h3>{{ $trans->recipient_contact }}</h3>
+                        </div>
+                        <div class="text-end">
+                            @if($user->branch->currency == $trans->currency_conversion_code)
+                                <h2 class="text-2xl">{{ $trans->amount_converted }} <span class="text-sm">{{ $trans->currency_conversion_code }}</span></h2>
+                            @else
+                                <h2 class="text-2xl">{{ $trans->amount_local_currency }} <span class="text-sm">{{ $trans->original_currency }}</span></h2>
+                            @endif
+                            
+                            @if($trans->transaction_status == "PENDING")
+                                <p class="text-warning-400">PENDING</p>
+                            @elseif($trans->transaction_status == "COMPLETED")
+                                <p class="text-success-400">COMPLETED</p>
+                            @elseif($trans->transaction_status == "CANCELLED")
+                                <p class="text-danger-400">CANCELLED</p>
+                            @endif
+                            
+                        </div>
+                    </div>
+                    @endif
+                    @endforeach
+                    <h3 class="text-xl mb-5 mt-10">Your Requests</h3>
                     @foreach ($transactions as $trans)
                     @if($trans->sender_contact != $user->email)
-                    <div class="w-full flex justify-between rounded-md bg-[#232329] border-[1px] border-[#303036] p-3">
+                    <div class="w-full flex justify-between rounded-md bg-[#232329] border-[1px] border-[#303036] p-3 mb-2">
                         <div class="">
                             <h3 class="text-lg">{{ $trans->sender->first_name }} {{ $trans->sender->middle_name }} {{
                                 $trans->sender->last_name }}</h3>
                             <h3>{{ $trans->sender_contact }}</h3>
                         </div>
                         <div class="text-end">
-                            <h2 class="text-2xl">{{ $trans->amount_local_currency }} <span class="text-sm">{{ $trans->original_currency }}</span></h2>
+                            @if($user->branch->currency == $trans->currency_conversion_code)
+                            <h2 class="text-2xl">{{ $trans->amount_converted }} <span class="text-sm">{{ $trans->currency_conversion_code }}</span></h2>
+                                @else
+                                <h2 class="text-2xl">{{ $trans->amount_local_currency }} <span class="text-sm">{{ $trans->original_currency }}</span></h2>
+                                @endif
+                            
                             
                             @if($trans->transaction_status == "PENDING")
                                 <p class="text-warning-400">PENDING</p>
                             @elseif($trans->transaction_status == "COMPLETED")
-                                <p>COMPLETED</p>
-                            @elseif($trans->transaction_status == "FAILED")
-                                <p>FAILED</p>
+                                <p class="text-success-400">COMPLETED</p>
+                            @elseif($trans->transaction_status == "CANCELLED")
+                                <p class="text-danger-400">CANCELLED</p>
                             @endif
                             
                         </div>
@@ -114,12 +151,6 @@
                     <!-- <h3 class="text-5xl mb-2"><span id="currency"></span> {{$user->balance}}.00 <span></span></h3> -->
                     <!-- <h3 class="text-md mb-3.5">Available</h3> -->
                 </div>
-            </div>
-        </div>
-
-        <div class="h-screen">
-            <div class="bg-[#1C1C22]">
-
             </div>
         </div>
 

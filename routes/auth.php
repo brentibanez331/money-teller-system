@@ -88,12 +88,15 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('/teller-contacts', [UserController::class, 'getTellers'])->name('teller.contacts');
+    Route::get('/teller-activity', [TransactionController::class, 'getTransactions'])->name('teller.activity');
     Route::get('/sendmoney/{id}', [TransactionController::class, 'proceed'])->name('teller.sendmoney');
     Route::get('/requestmoney/{id}', [TransactionController::class, 'request'])->name('teller.requestmoney');
     Route::post('/sendtransaction/{id}', [TransactionController::class, 'transact'])->name('teller.transaction-details');
+    Route::get('/transdelete/{id}', [TransactionController::class, 'delete'])->name('teller.deletetransaction');
 
     Route::post('/store-transaction/{id}', [TransactionController::class, 'store'])->name('teller.storetransaction');
-    Route::post('/requesttransaction/{id}', [TransactionController::class, 'transact'])->name('teller.requesttransaction-details');
+    Route::get('/usertransactiondelete/{id}', [TransactionController::class, 'delete'])->name('teller.deletetransaction');
+    Route::get('/updatetransaction/{id}', [TransactionController::class, 'update'])->name('teller.updatetransaction');
 
     // Route::get('/admin-users', [UserController::class, 'index'])->name('admin.users');
 
