@@ -24,6 +24,7 @@ class User extends Authenticatable
         'birthdate',
         'full_address',
         'user_type_id',
+        'balance',
         'branch_assigned',
         'email',
         'password',
@@ -55,6 +56,11 @@ class User extends Authenticatable
 
     public function branch(){
         return $this->belongsTo(BranchProfile::class, 'branch_assigned', 'id');
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
     }
 
 }

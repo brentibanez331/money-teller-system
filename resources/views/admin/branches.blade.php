@@ -38,12 +38,12 @@
 
                 <li class="px-10 py-3.5 bg-gray-100 hover:bg-gray-200 transition ease-in-out duration-150 flex flex-row items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-5"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#161513" d="M80 104a24 24 0 1 0 0-48 24 24 0 1 0 0 48zm80-24c0 32.8-19.7 61-48 73.3v87.8c18.8-10.9 40.7-17.1 64-17.1h96c35.3 0 64-28.7 64-64v-6.7C307.7 141 288 112.8 288 80c0-44.2 35.8-80 80-80s80 35.8 80 80c0 32.8-19.7 61-48 73.3V160c0 70.7-57.3 128-128 128H176c-35.3 0-64 28.7-64 64v6.7c28.3 12.3 48 40.5 48 73.3c0 44.2-35.8 80-80 80s-80-35.8-80-80c0-32.8 19.7-61 48-73.3V352 153.3C19.7 141 0 112.8 0 80C0 35.8 35.8 0 80 0s80 35.8 80 80zm232 0a24 24 0 1 0 -48 0 24 24 0 1 0 48 0zM80 456a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"/></svg>
-                    <a href="/branches" class="ml-5">Branches</a>
+                    <a href="/admin-branches" class="ml-5">Branches</a>
                 </li>
 
                 <li class="px-10 py-3.5 hover:bg-gray-200 transition ease-in-out duration-150 flex flex-row items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-6"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#161513" d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg>
-                    <a href="/transactions" class="ml-5">Transactions</a>
+                    <a href="/admin-transactions" class="ml-5">Transactions</a>
                 </li>
 
                 <li class="px-10 py-3.5 hover:bg-gray-200 transition ease-in-out duration-150 flex flex-row items-center">
@@ -74,6 +74,7 @@
                                 CODE
                             </th>
                             <th scope="col" class="text-left dark:border-neutral-500 pb-3.5">COUNTRY CODE</th>
+                            <th scope="col" class="text-left dark:border-neutral-500 pb-3.5">CURRENCY</th>
                             <th scope="col" class="text-left dark:border-neutral-500 pb-3.5" colspan="2">ACTION</th>
                         </tr>
                     </thead>
@@ -86,6 +87,7 @@
                                     </div>
                                 <td class="whitespace-nowrap py-4 dark:border-neutral-500">{{ $cont->branch_code }}</td>
                                 <td class="whitespace-nowrap py-4 dark:border-neutral-500">{{ $cont->country_iso_code }}</td>
+                                <td class="whitespace-nowrap py-4 dark:border-neutral-500">{{ $cont->currency }}</td>
                                 <td
                                     class="whitespace-nowrap py-4 dark:border-neutral-500 ">
                                     <a href="{{ route('admin.editbranch', ['id' => $cont->id] ) }}"

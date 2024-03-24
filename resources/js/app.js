@@ -16,6 +16,17 @@ const currencySymbol = {
     'JP': '¥'
 }
 
+const currencyText = {
+    'PH': 'PHP',
+    'US': 'USD',
+    'SG': 'SGD',
+    'JP': 'JPY'
+}
+
+function getCurrencyText(countryCode){
+    return currencyText[countryCode];
+}
+
 function getCurrencySymbol(countryCode){
     return currencySymbol[countryCode];
 }
@@ -28,7 +39,15 @@ function getTimeZone(countryCode) {
 const userCountry = window.userCountry || 'PH';
 const timeZone = getTimeZone(userCountry);
 const currencyElement = document.getElementById('currency');
-currencyElement.textContent = getCurrencySymbol(userCountry);
+const currencyTextElement = document.getElementById('currency-text');
+
+if (currencyElement) {
+    currencyElement.textContent = getCurrencySymbol(userCountry);
+}
+
+if (currencyTextElement){
+    currencyTextElement.textContent = getCurrencyText(userCountry);
+}
 
 // Function to format and display the time and date
 function displayTimeAndDate() {
@@ -42,7 +61,7 @@ function displayTimeAndDate() {
     };
 
     const dateOptions = {
-        timeZone: 'Asia/Manila', // Set to Philippines time zone
+        timeZone: timeZone, // Set to Philippines time zone
         day: 'numeric',
         month: 'long',
         year: 'numeric',

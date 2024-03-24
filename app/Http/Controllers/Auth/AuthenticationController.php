@@ -41,8 +41,6 @@ class AuthenticationController extends Controller
             }else if($user->user_type_id == 2){
                 return redirect()->intended('/teller');
             }
-
-            
         }
 
         return back()->withErrors([

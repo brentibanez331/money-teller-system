@@ -16,4 +16,16 @@ class TransactionFees extends Model
         'max_amt',
         'rates',
     ];
+
+    public function getFees($amount){
+        $fees = self::all();
+
+        foreach($fees as $fee){
+            if($amount >= $fee->min_amt && $amount <= $fee->max_amt){
+                return ['id'=>$fee->id, 'rate'=>$fee->rates];
+            }
+        }
+
+        return ['id' => null, 'rate' => 20];
+    }
 }

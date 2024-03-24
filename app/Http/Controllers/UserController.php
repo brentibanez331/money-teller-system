@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -25,7 +26,11 @@ class UserController extends Controller
         if ($user->user_type_id == 1) {
             return view('admin.index', compact('users', 'user'))->with('admin.users', $users);
         } else if ($user->user_type_id == 2) {
-            return view('teller.index', compact('user'));
+            $transactions = Transaction::where('sender_contact', $user->email)
+                                        ->orWhere('recipient_contact', $user->email)
+                                        ->orderBy('dateTime_transaction', 'desc')
+                                        ->get();
+            return view('teller.index', compact('user', 'transactions'));
         }
     }
 
@@ -41,7 +46,7 @@ class UserController extends Controller
         $user = Auth::user();
         $tellers = User::where('user_type_id', 2)->whereNotIn('id', [$user->id])->get();  // Get all users with user_type_id = 2
 
-        return view('teller.contacts', compact('tellers'));
+        return view('teller.contacts', compact('tellers', 'user'));
     }
 
     public function store(Request $request): RedirectResponse|JsonResponse
@@ -142,7 +147,6 @@ class UserController extends Controller
                 'user_type_id' => $request->user_type_id,
                 'branch_assigned' => $request->branch_assigned,
                 'password' => Hash::make($request->password),
-                // 'country_iso_code' => $request->country_iso_code,
             ]);
             return redirect()->back();
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {

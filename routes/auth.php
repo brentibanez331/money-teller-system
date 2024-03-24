@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\TransactionFeeController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -36,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin-branches', [BranchController::class, 'index'])->name('admin.branches');
     Route::get('/admin-fees', [TransactionFeeController::class, 'index'])->name('admin.fees');
     Route::get('/admin-adduser', [BranchController::class, 'getData'])->name('admin.adduser');
+    Route::get('/admin-transactions', [TransactionController::class, 'index'])->name('admin.transactions');
 
     Route::post('/admin-userstore', [UserController::class, 'store'])->name('admin.store');
     Route::get('/userdelete/{id}', [UserController::class, 'delete'])->name('admin.deleteuser');
@@ -59,6 +61,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/ratedelete/{id}', [TransactionFeeController::class, 'delete'])->name('admin.deleterate');
     Route::get('/rateedit/{id}', [TransactionFeeController::class, 'edit'])->name('admin.editrate');
     Route::put('/rateupdate', [TransactionFeeController::class, 'update'])->name('admin.updaterate');
+
+    Route::get('/transactiondelete/{id}', [TransactionController::class, 'delete'])->name('admin.deletetransaction');
 
     //Dont change
     // Route::post('/store', [UserController::class, 'store'])->name('phonebook.store');
@@ -84,6 +88,12 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('/teller-contacts', [UserController::class, 'getTellers'])->name('teller.contacts');
+    Route::get('/sendmoney/{id}', [TransactionController::class, 'proceed'])->name('teller.sendmoney');
+    Route::get('/requestmoney/{id}', [TransactionController::class, 'request'])->name('teller.requestmoney');
+    Route::post('/sendtransaction/{id}', [TransactionController::class, 'transact'])->name('teller.transaction-details');
+
+    Route::post('/store-transaction/{id}', [TransactionController::class, 'store'])->name('teller.storetransaction');
+    Route::post('/requesttransaction/{id}', [TransactionController::class, 'transact'])->name('teller.requesttransaction-details');
 
     // Route::get('/admin-users', [UserController::class, 'index'])->name('admin.users');
 

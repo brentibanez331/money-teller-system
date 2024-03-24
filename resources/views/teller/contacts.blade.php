@@ -37,17 +37,75 @@
         <a href="#" class="w-32 py-3 bg-[#DD390D] text-xl mr-3.5 text-center rounded-full">Contacts</a>
     </div>
 
-    <div class="mx-52 pt-7">
-        <h2 class="text-2xl mb-7">Contacts</h2>
-        @foreach( $tellers as $cont )
-            <a> {{ $cont->first_name }} {{ $cont->middle_name }} {{ $cont->last_name }}</a>
-        @endforeach
+    <div class="w-7/12 mx-52">
+    <h2 class="text-2xl mb-3.5">Contacts</h2>
+    <p class="mb-7">Your Location: {{ $user->branch->country_iso_code }}</p>
+    <table
+                class="min-w-full text-sm font-light dark:border-neutral-500">
+                    <thead class="font-medium dark:border-neutral-500">
+                        <tr>
+                            <th
+                                scope="col"
+                                class=" text-left dark:border-neutral-500 pb-3.5 pl-4">
+                                NAME
+                            </th>
+                            <th
+                                scope="col"
+                                class=" text-left dark:border-neutral-500 pb-3.5">
+                                LOCATION
+                            </th>
+                            <th
+                                scope="col"
+                                class=" text-left dark:border-neutral-500 pb-3.5">
+                                BRANCH
+                            </th>
+                            <th
+                                scope="col"
+                                class=" text-left dark:border-neutral-500 pb-3.5">
+                                COUNTRY
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($tellers as $cont)
+                        
+                            <tr class="border-t border-b border-neutral-300 ease-in-out hover:bg-[#1a1a1a]">
+                                <td class="flex flex-col whitespace-nowrap px-4 py-4 dark:border-neutral-500">
+                                    <a href="">
+                                        <div class="mb-0.5 text-xl">
+                                            {{ $cont->first_name }} {{ $cont->middle_name}} {{$cont->last_name}}
+                                        </div>
+                                        <div class="font-bold text-blue-200">
+                                            {{ $cont->email }}
+                                        </div>
+                                    </a>
+                                </td>
+                                <td class="whitespace-nowrap py-4 dark:border-neutral-500">
+                                <p class="flex items-end">
+                                    @if($user->branch->country_iso_code == $cont->branch->country_iso_code) 
+                                        Local
+                                    @else
+                                        International
+                                    @endif
+                                </p>
+                                </td>
+                                
+                                <td class="whitespace-nowrap py-4 dark:border-neutral-500">{{ $cont->branch->branch_name ?? '' }}</td>
+                                <td class="whitespace-nowrap py-4 dark:border-neutral-500 pr-14">{{ $cont->branch->country_iso_code ?? '' }}</td>
+                                <td class="whitespace-nowrap py-4 dark:border-neutral-500">
+                                    <a href="{{route("teller.sendmoney", $cont->id)}}" class="text-success-500 text-lg hover:text-success-200 transition ease-in-out duration-150">Send &uarr;</a>
+                                </td>
+                                <td class="whitespace-nowrap py-4 dark:border-neutral-500">
+                                    <a href="{{route("teller.requestmoney", $cont->id)}}" class="text-blue-400 text-lg hover:text-blue-200 transition ease-in-out duration-150">Request &darr;</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
     </div>
 
 
 
 </main>
-<script>
-</script>
 </body>
 </html>

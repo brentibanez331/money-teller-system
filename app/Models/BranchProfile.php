@@ -17,6 +17,7 @@ class BranchProfile extends Model
         'branch_name',
         'branch_code',
         'country_iso_code',
+        'currency'
     ];
 
     public function branch()

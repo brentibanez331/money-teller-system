@@ -32,6 +32,7 @@ class BranchController extends Controller
             'branch_name' => 'required',
             'branch_code' => 'required',
             'country_iso_code' => 'required',
+            'currency' => 'required'
         ]);
 
         try {
@@ -40,6 +41,7 @@ class BranchController extends Controller
             $branch->branch_name = $request->branch_name;
             $branch->branch_code = $request->branch_code;
             $branch->country_iso_code = $request->country_iso_code;
+            $branch->currency = $request->currency;
     
             $branch->saveOrFail();
             Log::info('Branch profile created successfully: '.$branch->branch_name);
@@ -100,6 +102,7 @@ class BranchController extends Controller
                 'branch_name' => $request->branch_name,
                 'branch_code' => $request->branch_code,
                 'country_iso_code' => $request->country_iso_code,
+                'currency' => $request->currency,
             ]);
             return redirect()->back();
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {

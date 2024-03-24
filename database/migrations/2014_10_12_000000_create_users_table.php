@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->string('branch_name');
             $table->string('branch_code');
             $table->string('country_iso_code');
+            $table->string('currency');
         });
 
         Schema::create('tbl_transaction_fees', function (Blueprint $table) {
@@ -31,20 +32,21 @@ return new class extends Migration {
 
         Schema::create('tbl_transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('reference_number');
-            $table->string('sender_name');
-            $table->string('sender_contact');
-            $table->string('recepient_name');
-            $table->string('recepient_contact');
-            $table->string('transaction_type');
-            $table->float('amount_local_currency');
-            $table->string('currency_conversion_code');
-            $table->string('amount_converted');
-            $table->string('transaction_status');
-            $table->unsignedBigInteger('branch_sent');
-            $table->unsignedBigInteger('branch_received');
-            $table->unsignedBigInteger('transfer_fee_id');
-            $table->dateTime('datetime_transaction');
+            $table->string('reference_number')->nullable();
+            $table->string('sender_name')->nullable();
+            $table->string('sender_contact')->nullable();
+            $table->string('recipient_name')->nullable();
+            $table->string('recipient_contact')->nullable();
+            $table->string('transaction_type')->nullable();
+            $table->float('amount_local_currency')->nullable();
+            $table->string('original_currency')->nullable();
+            $table->string('currency_conversion_code')->nullable();
+            $table->float('amount_converted')->nullable();
+            $table->string('transaction_status')->nullable()->default("PENDING");
+            $table->unsignedBigInteger('branch_sent')->nullable();
+            $table->unsignedBigInteger('branch_received')->nullable();
+            $table->unsignedBigInteger('transfer_fee_id')->nullable();
+            $table->dateTime('datetime_transaction')->nullable();
 
             $table->foreign('branch_sent')->references('id')->on('tbl_branch_profile')->onDelete('cascade');
             $table->foreign('branch_received')->references('id')->on('tbl_branch_profile')->onDelete('cascade');
@@ -60,7 +62,7 @@ return new class extends Migration {
             $table->string('password');
             $table->date('birthdate')->nullable();
             $table->string('full_address')->nullable();
-            $table->integer('balance')->nullable()->default(1000);
+            $table->float('balance')->nullable()->default(10000);
             $table->unsignedBigInteger('user_type_id')->default(2);
             $table->unsignedBigInteger('branch_assigned')->default(1);
             $table->rememberToken();
