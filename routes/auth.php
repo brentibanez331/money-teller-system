@@ -14,20 +14,6 @@ Route::middleware('guest')->group(function () {
     Route::post('register', [RegisterController::class, 'register'])->name('register.account');
 });
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/phonebook', function () {
-//         return view('phonebook/index');
-//     });
-//     Route::get('/phonebook', [PhonebookController::class, 'index'])->name('phonebook.index');
-//     Route::post('/store', [PhonebookController::class, 'store'])->name('phonebook.store');
-//     Route::get('/edit/{id}', [PhonebookController::class, 'edit'])->name('phonebook.edit');
-//     Route::put('/update', [PhonebookController::class, 'update'])->name('phonebook.update');
-//     Route::get('/delete/{id}', [PhonebookController::class, 'delete'])->name('phonebook.delete');
-
-//     Route::post('logout', [AuthenticationController::class, 'destroy'])
-//                 ->name('logout');    
-// });
-
 Route::middleware('auth')->group(function () {
     Route::get('/admin', function () {
         return view('admin/index');
@@ -49,7 +35,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('/admin-addrates', function () {
-        return view('admin/addrates');
+        return view('admin/addfees');
     });
 
     Route::post('/admin-branchstore', [BranchController::class, 'store'])->name('admin.storebranch');
@@ -63,12 +49,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/rateupdate', [TransactionFeeController::class, 'update'])->name('admin.updaterate');
 
     Route::get('/transactiondelete/{id}', [TransactionController::class, 'delete'])->name('admin.deletetransaction');
-
-    //Dont change
-    // Route::post('/store', [UserController::class, 'store'])->name('phonebook.store');
-    // Route::get('/edit/{id}', [UserController::class, 'edit'])->name('phonebook.edit');
-    Route::put('/update', [UserController::class, 'update'])->name('phonebook.update');
-    // Route::get('/delete/{id}', [UserController::class, 'delete'])->name('phonebook.delete');
 
     Route::post('logout', [AuthenticationController::class, 'destroy'])
                 ->name('logout');    
@@ -97,14 +77,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/store-transaction/{id}', [TransactionController::class, 'store'])->name('teller.storetransaction');
     Route::get('/usertransactiondelete/{id}', [TransactionController::class, 'delete'])->name('teller.deletetransaction');
     Route::get('/updatetransaction/{id}', [TransactionController::class, 'update'])->name('teller.updatetransaction');
-
-    // Route::get('/admin-users', [UserController::class, 'index'])->name('admin.users');
-
-    //Dont change
-    Route::post('/store', [UserController::class, 'store'])->name('phonebook.store');
-    // Route::get('/edit/{id}', [UserController::class, 'edit'])->name('phonebook.edit');
-    Route::put('/update', [UserController::class, 'update'])->name('phonebook.update');
-    Route::get('/delete/{id}', [UserController::class, 'delete'])->name('phonebook.delete');
 
     Route::post('logout', [AuthenticationController::class, 'destroy'])
                 ->name('logout');    

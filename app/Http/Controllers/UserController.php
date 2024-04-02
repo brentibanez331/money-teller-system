@@ -22,9 +22,17 @@ class UserController extends Controller
         $users = User::all();
 
         $user = Auth::user();
+        $noOfTellers = User::where('user_type_id', 2)->count();
+        $noOfAdmins = User::where('user_type_id', 1)->count();
+        $noOfTransactions = Transaction::count();
+        $topBranches = User::selectRaw('branch_assigned, count(*) as branch_count')->groupBy('branch_assigned')
+                                    ->orderByDesc('branch_count')
+                                    ->take(3)
+                                    ->get();
+        $transactions = Transaction::all()->where('transaction_status', 'COMPLETED')->sortByDesc('datetime_transaction')->take(3);
 
         if ($user->user_type_id == 1) {
-            return view('admin.index', compact('users', 'user'))->with('admin.users', $users);
+            return view('admin.index', compact('users', 'user', 'noOfTellers', 'noOfAdmins', 'noOfTransactions', 'topBranches', 'transactions'))->with('admin.users', $users);
         } else if ($user->user_type_id == 2) {
             $transactions = Transaction::where('sender_contact', $user->email)
                                         ->orWhere('recipient_contact', $user->email)

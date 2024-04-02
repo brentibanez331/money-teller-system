@@ -13,7 +13,7 @@ class TransactionFeeController extends Controller
 {
     public function index()
     {
-        $fees = TransactionFees::all();
+        $fees = TransactionFees::all()->sortBy('min_amt');
 
         return view('admin.fees', compact('fees'))->with('admin.users', $fees);
     }

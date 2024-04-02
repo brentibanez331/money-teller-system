@@ -7,7 +7,7 @@
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
 </head>
-<body>
+<body class="bg-[#161513] text-white">
     @include('auth.layouts.header')
         @yield('content')
     @include('auth.layouts.footer')

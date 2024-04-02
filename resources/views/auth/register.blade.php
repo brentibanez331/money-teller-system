@@ -7,6 +7,10 @@ Register
 @section('content')
 <!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com --> 
   <section class="h-screen">
+    <div class="w-full mt-7 flex justify-center items-center">
+      <img class="w-7 mr-2" src="image/coinflux.png"/>
+      <h1 class="text-2xl font-bold">CoinFlux</h1>
+      </div>
   <div class="h-full">
     <!-- Left column container with background-->
     <div
@@ -20,7 +24,7 @@ Register
       </div>
 
       <!-- Right column container -->
-      <div class="mb-12 mt-5 w-10/12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-4/12 md:mr-44">
+      <div class="mb-12 w-10/12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-4/12 md:mr-44">
       @if ($errors->any())
         @foreach ($errors->all() as $error)
           <div
@@ -64,14 +68,14 @@ Register
         <form  method="POST" action="{{ route('register.account') }}">
           @csrf <!-- {{ csrf_field() }} -->
           <!--Sign in section-->
-          <h2 class="items-center mb-2 text-center text-3xl font-bold text-black">Create an Account</h2>
-          <p class="text-center mb-7 text-neutral-700">One account for all of your <span class="font-bold">cashflow</span></h2>
+          <h2 class="items-center mb-2 text-center text-3xl font-bold text-white">Create an Account</h2>
+          <p class="text-center mb-7 text-neutral-400">One account for all of your <span class="font-bold">cashflow</span></h2>
           <div
             class="flex flex-row items-center justify-center lg:justify-start">  
           </div>
 
           <!-- Name input -->
-          <div class="flex flex-row mb-4">
+          <div class="flex flex-row mb-2">
             <div class="relative mr-3.5" data-te-input-wrapper-init>
               <input
                 type="text"
@@ -114,7 +118,7 @@ Register
           </div>
 
           <!-- Birthdate input -->
-          <div class="relative mb-4" data-te-input-wrapper-init>
+          <div class="relative mb-2" data-te-input-wrapper-init>
             <input
               type="date"
               class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
@@ -129,7 +133,7 @@ Register
           </div>
 
           <!-- Full Address input -->
-          <div class="relative mb-4" data-te-input-wrapper-init>
+          <div class="relative mb-2" data-te-input-wrapper-init>
             <input
               type="text"
               class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
@@ -145,7 +149,7 @@ Register
           
 
           <!-- Email input -->
-          <div class="relative mb-4" data-te-input-wrapper-init>
+          <div class="relative mb-2" data-te-input-wrapper-init>
             <input
               type="text"
               class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
@@ -160,7 +164,7 @@ Register
           </div>
 
           <!-- Password input -->
-          <div class="relative mb-4" data-te-input-wrapper-init>
+          <div class="relative mb-2" data-te-input-wrapper-init>
             <input
               type="text"
               class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
@@ -175,7 +179,7 @@ Register
           </div>
 
           <!-- Confirmation Password input -->
-          <div class="relative mb-4" data-te-input-wrapper-init>
+          <div class="relative mb-2" data-te-input-wrapper-init>
             <input
               type="password"
               class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark dark:placeholder:text-dark-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 mb-10"
@@ -202,7 +206,7 @@ Register
             </button>
 
             <!-- Register link -->
-            <p class="mb-0 mt-2 pt-1 text-sm font-semibold mt-8 mb-10 text-center text-neutral-300">
+            <p class="mb-0 pt-1 text-sm font-semibold mt-2 mb-10 text-center text-neutral-300">
               Already have an account?
               <a
                 href="/login"

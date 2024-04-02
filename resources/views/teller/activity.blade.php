@@ -13,16 +13,13 @@
     <main>
         <div class="px-52 flex flex-row items-center py-7 justify-between">
             <div class="flex flex-row items-center">
-                <!-- <h1 class="font-bold text-3xl py-10 pr-32">CashFlow</h1> -->
                 <img src='/image/coinflux.png' class="size-10 mr-24" />
                 <div class="flex flex-row">
                     <a href="/teller"
                         class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Home</a>
-                    <a href="/teller-send"
+                    <a href="/teller-contacts"
                         class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Send
                         and Request</a>
-                    <a href="/teller-wallet"
-                        class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Wallet</a>
                     <a href="/teller-activity" class="text-xl px-5 py-2 rounded-full mr-5 bg-[#292929]">Activity</a>
                 </div>
             </div>

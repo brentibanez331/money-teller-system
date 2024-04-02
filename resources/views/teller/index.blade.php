@@ -13,15 +13,13 @@
     <main>
         <div class="px-52 flex flex-row items-center py-7 justify-between">
             <div class="flex flex-row items-center">
-                <!-- <h1 class="font-bold text-3xl py-10 pr-32">CashFlow</h1> -->
+
                 <img src='/image/coinflux.png' class="size-10 mr-24" />
                 <div class="flex flex-row">
                     <a href="/teller" class="text-xl px-5 py-2 rounded-full mr-5 bg-[#292929]">Home</a>
-                    <a href="/teller-send"
+                    <a href="{{ route("teller.contacts")}}"
                         class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Send
                         and Request</a>
-                    <a href="/teller-wallet"
-                        class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Wallet</a>
                     <a href="{{ route("teller.activity") }}"
                         class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Activity</a>
                 </div>
@@ -51,16 +49,6 @@
                 </div>
             </div>
             <div class="w-5/12">
-                <div class="flex flex-row mb-9">
-                    <div
-                        class="text-2xl bg-[#DD390D] py-2 rounded-full h-12 w-52 items-center flex justify-center mr-3.5 hover:bg-[#DB532E] transition ease-in-out duration-300 hover:cursor-pointer">
-                        <a href="">Send</a>
-                    </div>
-                    <div
-                        class="text-2xl border-[#DD390D] py-2 border-[1px] rounded-full h-12 w-52 items-center flex justify-center hover:bg-[#DD390D] transition ease-int-out duration-300 hover:cursor-pointer">
-                        <a href="/teller-request">Request</a>
-                    </div>
-                </div>
                 <div class="bg-[#1C1C22] p-6 rounded-lg border-neutral-700 border-[1px]">
                     <h3 class="text-2xl mb-5">Recent Activity</h3>
                     <h3 class="text-xl mb-5">Send History</h3>
@@ -148,8 +136,6 @@
                     </div>
                     @endif
                     @endforeach
-                    <!-- <h3 class="text-5xl mb-2"><span id="currency"></span> {{$user->balance}}.00 <span></span></h3> -->
-                    <!-- <h3 class="text-md mb-3.5">Available</h3> -->
                 </div>
             </div>
         </div>

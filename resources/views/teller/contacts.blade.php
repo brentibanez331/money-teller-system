@@ -11,13 +11,11 @@
 <main>
     <div class="px-52 flex flex-row items-center py-7 justify-between">
         <div class="flex flex-row items-center">
-            <!-- <h1 class="font-bold text-3xl py-10 pr-32">CashFlow</h1> -->
             <img src='/image/coinflux.png' class="size-10 mr-24"/>
             <div class="flex flex-row">
                 <a href="/teller" class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Home</a>
-                <a href="/teller" class="text-xl px-5 py-2 rounded-full mr-5 bg-[#292929]">Send and Request</a>
-                <a href="/teller" class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Wallet</a>
-                <a href="/teller" class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Activity</a>
+                <a href="/teller-send" class="text-xl px-5 py-2 rounded-full mr-5 bg-[#292929]">Send and Request</a>
+                <a href="/teller-activity" class="text-xl px-5 py-2 rounded-full mr-5 border-transparent hover:border-[#292929] border-2 transition ease-in-out duration-300">Activity</a>
             </div>
         </div>    
         
@@ -30,14 +28,8 @@
             </a>
         </form>
     </div>
-    
-    <div class="flex flex-row justify-start mx-52 my-7">
-        <a href="/teller-send" class="w-32 py-3 text-xl text-center rounded-full hover:border-[#DD390D] border-transparent border-[1px] transition ease-in-out duration-150 mr-3.5">Send</a>
-        <a href="/teller-request" class="w-32 py-3 text-xl text-center mr-3.5 rounded-full hover:border-[#DD390D] border-transparent border-[1px] transition ease-in-out duration-150">Request</a>
-        <a href="#" class="w-32 py-3 bg-[#DD390D] text-xl mr-3.5 text-center rounded-full">Contacts</a>
-    </div>
 
-    <div class="w-7/12 mx-52">
+    <div class="w-7/12 mx-52 my-7">
     <h2 class="text-2xl mb-3.5">Contacts</h2>
     <p class="mb-7">Your Location: {{ $user->branch->country_iso_code }}</p>
     <table

@@ -29,13 +29,10 @@ Route::get('/contact', function () {
     return view('contact/content'); //path of your view file
 });
 
-// Route::get('/adduser', function(){
-//     return view('admin/adduser');
-// });
 
 Route::middleware(['auth', 'role'])->group(function () {
     Route::get('/phonebook', function () {
-        return view('phonebook.index'); // Assuming the view file is located at resources/views/phonebook/index.blade.php
+        return view('phonebook.index');
     });
 });
 
